@@ -10,7 +10,7 @@ import routerDinosaur from './routes/api/dinosaurRouter'
 import routerArticle from './routes/api/articleRouter'
 import routerAsset from './routes/api/assetRouter'
 import routerSection from './routes/api/sectionRouter'
-import azureRouter from './routes/api/azureRouter'
+import routerBlob from './routes/api/blobRouter'
 
 config()
 
@@ -31,7 +31,7 @@ app.use(`${APIPATH}/dinosaurs`,routerDinosaur)
 app.use(`${APIPATH}/articles`,routerArticle)
 app.use(`${APIPATH}/assets`,routerAsset)
 app.use(`${APIPATH}/sections`,routerSection)
-app.use(`${APIPATH}/azure`,azureRouter)
+app.use(`${APIPATH}/blob`,routerBlob)
 //
 
 app.all('*', (req, res) => {

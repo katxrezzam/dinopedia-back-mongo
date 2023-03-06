@@ -10,6 +10,7 @@ export interface CreateDinasaur {
  location: string,
  diet: Diet,
  url_image: string,
+ url_render: string,
  article_id: ArticleAttributes['_id']
 }
 export interface UpdateDinosaur extends Partial<CreateDinasaur> {}

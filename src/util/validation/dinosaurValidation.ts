@@ -43,6 +43,7 @@ export const toNewDinosaur = (object: any): CreateDinasaur => {
     era: eraValidation(object.era),
     diet: dietValidation(object.diet),
     url_image: stringValidation(object.url_image),
+    url_render: stringValidation(object.url_render),
     article_id: idSchemaValidation(object.article_id)
   }
   return newDinosaur
@@ -56,7 +57,7 @@ export const toNewUpdateDinosaur = (object: any): UpdateDinosaur => {
   if(dino.era) dino.era = eraValidation(dino.era)
   if(dino.diet) dino.diet = dietValidation(dino.diet)
   if(dino.url_image) dino.url_image = stringValidation(dino.url_image)
+  if(dino.url_render) dino.url_render = stringValidation(dino.url_render)
   if(dino.article_id) dino.article_id = idSchemaValidation(dino.article_id)
-
   return dino
 }

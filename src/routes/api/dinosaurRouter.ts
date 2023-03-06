@@ -1,15 +1,15 @@
 import { Router } from "express";
 import { createDinosaur, updateDinosaur, findAllDinosaur, findDinosaurById, deleteDinosaur } from "../../controllers/dinosaurController";
-
+import { upload } from "../../lib/multerConfig";
 
 const routerDinosaur = Router()
 
 routerDinosaur.route('/')
   .get(findAllDinosaur)
-  .post(createDinosaur)
+  .post(upload.single('file') ,createDinosaur)
 
 routerDinosaur.route('/:id')
-  .put(updateDinosaur)
+  .put(upload.single('file') ,updateDinosaur)
   .get(findDinosaurById)
   .delete(deleteDinosaur)
 
