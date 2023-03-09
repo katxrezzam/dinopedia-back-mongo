@@ -10,6 +10,7 @@ export interface DinosaurAttributes{
   era: Era,
   diet: Diet,
   url_image: string,
+  url_render: string,
   article_id: ArticleAttributes['_id']
 }
 
@@ -38,6 +39,10 @@ const DinosaurSchema = new Schema<DinosaurAttributes>({
     required: true,
   },
   url_image: {
+    type: String,
+    required: true
+  },
+  url_render: {
     type: String,
     required: true
   },

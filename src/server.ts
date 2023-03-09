@@ -10,6 +10,12 @@ import routerDinosaur from './routes/api/dinosaurRouter'
 import routerArticle from './routes/api/articleRouter'
 import routerAsset from './routes/api/assetRouter'
 import routerSection from './routes/api/sectionRouter'
+import credentials from './middleware/credentials'
+import cookieParser from 'cookie-parser'
+import routerAuth from './routes/auth'
+import routerRegister from './routes/register'
+import routerRefresh from './routes/refresh'
+import routerLogout from './routes/logout'
 
 config()
 
@@ -20,12 +26,18 @@ const APIPATH = '/api'
 initDB()
 
 //MIDDLEWARE
-app.use(express.json())
+app.use(credentials)
 app.use(cors(corsOptions))
 app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
+app.use(cookieParser())
 
 //ROUTES
 app.use('/',routerRoot)
+app.use('/login',routerAuth)
+app.use('/register',routerRegister)
+app.use('/refresh',routerRefresh)
+app.use('/logout',routerLogout)
 app.use(`${APIPATH}/dinosaurs`,routerDinosaur)
 app.use(`${APIPATH}/articles`,routerArticle)
 app.use(`${APIPATH}/assets`,routerAsset)

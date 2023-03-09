@@ -1,9 +1,12 @@
 import { RequestHandler } from "express"
 import { create, destroy, findAll, findById, findBySection, update } from "../services/assetServices"
+import { uploadBlob } from "../services/blobServices"
 import { UpdateAsset } from "../types"
 import { errorJson, errorMessage } from "../util/errorLogger"
 import { toNewAsset, toNewUpdateAsset } from "../util/validation/assetValidation"
 import { idSchemaValidation } from "../util/validation/_validation"
+
+const container = 'assets'
 
 export const findAllAsset: RequestHandler = async (_req, res) => {
   try {
@@ -40,6 +43,8 @@ export const findAssetBySection: RequestHandler = async (req, res) => {
 export const createAsset: RequestHandler = async (req, res) => {
   try {
     const newAsset = toNewAsset(req.body)
+    const { buffer, originalname } = req.file as Express.Multer.File
+    await uploadBlob(buffer, originalname, container)
     const parsedAsset = await create(newAsset)
     res.json(parsedAsset)
   } catch (error) {
