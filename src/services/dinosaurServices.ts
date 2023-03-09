@@ -19,7 +19,7 @@ export const update = async(id: Schema.Types.ObjectId, dino: Partial<DinosaurInp
   const foundDino = await Dinosaur.findById(id)
   if(!foundDino) throw new Error('Not dino found')
 
-  const { name, location, kind, diet, era, article_id, url_image } = dino
+  const { name, location, kind, diet, era, article_id, url_image, url_render } = dino
   if(name) foundDino.name = name
   if(location) foundDino.location = location
   if(kind) foundDino.kind = kind
@@ -27,6 +27,7 @@ export const update = async(id: Schema.Types.ObjectId, dino: Partial<DinosaurInp
   if(era) foundDino.era = era
   if(article_id) foundDino.article_id = article_id
   if(url_image) foundDino.url_image = url_image
+  if(url_render) foundDino.url_render = url_render
 
   return await foundDino.save()
 }

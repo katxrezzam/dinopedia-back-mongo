@@ -43,3 +43,8 @@ export const idSchemaValidation = (idFromRequest: any): Schema.Types.ObjectId =>
   }
   return idFromRequest
 }
+
+export const bufferValidation = (bufferFromRequest: any): Buffer => {
+  if(!Buffer.isBuffer(bufferFromRequest)) throw new Error('Invalid buffer data type')
+  return bufferFromRequest
+}

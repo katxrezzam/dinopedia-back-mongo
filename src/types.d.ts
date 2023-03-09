@@ -1,6 +1,7 @@
 import { Diet, Era, Kind } from "./enums";
 import { ArticleAttributes } from "./models/Article";
 import { SectionAttributes } from "./models/Section";
+import { Request } from "express";
 
 //Dinosaur
 export interface CreateDinasaur {
@@ -35,3 +36,16 @@ export interface CreateAsset {
   section_id: SectionAttributes['_id']
 }
 export interface UpdateAsset extends Partial<CreateAsset>{}
+
+//User
+export interface CreateUser {
+  userName: string
+  pwd: string
+}
+export interface UpdateUser extends Partial<CreateUser>{}
+
+//
+interface AuthRequest extends Request {
+  user?: string,
+  roles?: string[]
+}
