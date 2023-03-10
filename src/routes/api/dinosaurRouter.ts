@@ -6,7 +6,7 @@ const routerDinosaur = Router()
 
 routerDinosaur.route('/')
   .get(findAllDinosaur)
-  .post(upload.single('file') ,createDinosaur)
+  .post(upload.array('files') ,createDinosaur)
 
 routerDinosaur.route('/:id')
   .put(upload.single('file') ,updateDinosaur)

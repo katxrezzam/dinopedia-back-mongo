@@ -16,6 +16,7 @@ import routerAuth from './routes/auth'
 import routerRegister from './routes/register'
 import routerRefresh from './routes/refresh'
 import routerLogout from './routes/logout'
+import routerTest from './routes/test'
 
 config()
 
@@ -27,6 +28,7 @@ initDB()
 
 //MIDDLEWARE
 app.use(credentials)
+app.use('/login',routerAuth)
 app.use(cors(corsOptions))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
@@ -42,6 +44,7 @@ app.use(`${APIPATH}/dinosaurs`,routerDinosaur)
 app.use(`${APIPATH}/articles`,routerArticle)
 app.use(`${APIPATH}/assets`,routerAsset)
 app.use(`${APIPATH}/sections`,routerSection)
+app.use(`${APIPATH}/test`,routerTest)
 //
 
 app.all('*', (req, res) => {
